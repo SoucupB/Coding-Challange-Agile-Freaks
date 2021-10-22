@@ -16,12 +16,12 @@ def processArguments(isTest):
     return True
   except Exception as error:
     if not isTest:
-      print(repr(error))
+      print(error)
       exit()
     return False
   return None
 
-def calculate(userLatitude, userLongitude, path, isTest):
+def calculate(userLatitude, userLongitude, path, isTest=False):
   coffeeShops = getCSVAsArray(path)
   coffeeList = []
   response = []
