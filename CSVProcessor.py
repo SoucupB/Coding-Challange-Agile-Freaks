@@ -6,6 +6,8 @@ def splitCSVArray(data):
 
 def latAndLonToFloat(rows):
   for row in rows:
+    if len(row) != 3:
+      raise Exception('Wrong number of columns in CSV or just not an CSV')
     try:
       row[1] = float(row[1])
       row[2] = float(row[2])
@@ -17,10 +19,13 @@ def latAndLonToFloat(rows):
 def getCSVAsArray(path):
   response = None
   if 'http://' in path or 'https://' in path:
-    responseStructure = requests.get(path)
-    if responseStructure.status_code != 200:
-      raise Exception(f"This link leads nowhere")
-    response = responseStructure.text
+    try:
+      responseStructure = requests.get(path)
+      if responseStructure.status_code != 200:
+        raise Exception()
+      response = responseStructure.text
+    except Exception as error:
+      raise Exception(f"This link leads nowhere or data is not a csv")
   else:
     try:
       with open(path) as fd:
