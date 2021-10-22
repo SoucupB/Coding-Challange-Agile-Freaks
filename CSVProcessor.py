@@ -26,7 +26,7 @@ def getCSVAsArray(path):
       with open(path) as fd:
         response = fd.read()
     except:
-      raise Exception(f"This file does not exists or the link provided lead nowhere!")
+      raise Exception(f"This file does not exists check its spelling!")
   rows = splitCSVArray(response)
   return latAndLonToFloat(rows)
 
