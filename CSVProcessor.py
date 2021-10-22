@@ -10,17 +10,23 @@ def latAndLonToFloat(rows):
       row[1] = float(row[1])
       row[2] = float(row[2])
     except Exception as error:
-      print(repr(error))
-      exit()
-  try:
-    validateCSVArray(rows)
-  except Exception as error:
-    print(repr(error))
-    exit()
+      raise Exception(f"One of the coordinates is malformed '{row[1]}' or '{row[2]}'!")
+  validateCSVArray(rows)
   return rows
 
 def getCSVAsArray(path):
-  response = requests.get(path)
-  rows = splitCSVArray(response.text)
+  response = None
+  if 'http://' in path or 'https://' in path:
+    responseStructure = requests.get(path)
+    if responseStructure.status_code != 200:
+      raise Exception(f"This link leads nowhere")
+    response = responseStructure.text
+  else:
+    try:
+      with open(path) as fd:
+        response = fd.read()
+    except:
+      raise Exception(f"This file does not exists or the link provided lead nowhere!")
+  rows = splitCSVArray(response)
   return latAndLonToFloat(rows)
 
