@@ -1,13 +1,13 @@
 def validateCSVArray(rows):
   for row in rows:
-    if validateLatitude(row[1]):
-      raise Exception(f"Wrong latitude value for value {row[1]}")
-    if validateLongitude(row[2]):
-      raise Exception(f"Wrong longitude value for value {row[2]}")
+    if validatePosY(row[1]):
+      raise Exception(f"Wrong PosY value for value {row[1]}")
+    if validatePosX(row[2]):
+      raise Exception(f"Wrong PosX value for value {row[2]}")
   return True
 
-def validateLatitude(latitude):
-  return latitude < -90 or latitude > 90
+def validatePosY(PosY):
+  return PosY < -90 or PosY > 90
 
-def validateLongitude(longitude):
-  return longitude < -180 or longitude > 180
+def validatePosX(PosX):
+  return PosX < -180 or PosX > 180
