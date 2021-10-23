@@ -10,6 +10,7 @@ def testRequirmentCase():
   assert str(calculate(posY, posX, path)) == str(actualResponse)
   passed("testRequirmentCase")
 
+#Test the application to see if I change the users position to be closer to Sydney.
 def testCloseToSydneyCase():
   posY = -35.871843
   posX = 150.206767
@@ -18,6 +19,7 @@ def testCloseToSydneyCase():
   assert str(calculate(posY, posX, path)) == str(actualResponse)
   passed("testCloseToSydneyCase")
 
+#Test if the application resonds with apropiate message if the input file does not exists.
 def testNonExistentFileCase():
   posY = -35.871843
   posX = 150.206767
@@ -28,6 +30,7 @@ def testNonExistentFileCase():
     assert "This file does not exists" in str(error)
   passed("testNonExistentFileCase")
 
+#Test if the provided link responds with correctly formatted data.
 def testWrongLinkCase():
   posY = -35.871843
   posX = 150.206767
@@ -38,6 +41,7 @@ def testWrongLinkCase():
     assert "just not an CSV" in str(error)
   passed("testWrongLinkCase")
 
+#Test if the data from the csv is correctly formatted. (the number are numbers and if there are 3 columns).
 def testMalformedInputCase():
   posY = -35.871843
   posX = 150.206767
