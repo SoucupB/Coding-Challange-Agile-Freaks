@@ -2,7 +2,7 @@ from CSVProcessor import getCSVAsArray
 from MathProcessor import getDistance
 import heapq
 
-def calculate(userLatitude, userLongitude, path, isTest=False):
+def calculate(userLatitude, userLongitude, path):
   coffeeShops = getCSVAsArray(path)
   coffeeList = []
   response = []
@@ -12,7 +12,5 @@ def calculate(userLatitude, userLongitude, path, isTest=False):
   numberOfCoffeeShops = 3
   for index in range(numberOfCoffeeShops):
     rootHeap = heapq.heappop(coffeeList)
-    if not isTest:
-      print(f"{rootHeap[1]},{'{:0.4f}'.format(rootHeap[0])}")
     response.append((rootHeap[1],'{:0.4f}'.format(rootHeap[0])))
   return response
