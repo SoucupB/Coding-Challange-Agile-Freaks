@@ -4,7 +4,7 @@ from CSVValidator import validateCSVArray
 def splitCSVArray(data):
   return [row.split(",") for row in data.split("\n")]
 
-def latAndLonToFloat(rows):
+def pointsIntegrity(rows):
   for row in rows:
     if len(row) != 3:
       raise Exception('Wrong number of columns in CSV or just not an CSV')
@@ -33,5 +33,5 @@ def getCSVAsArray(path):
     except:
       raise Exception(f"This file does not exists check its spelling!")
   rows = splitCSVArray(response)
-  return latAndLonToFloat(rows)
+  return pointsIntegrity(rows)
 

@@ -1,5 +1,5 @@
 from math import sqrt
 
 #In orther to change the distance function to give min distance on a globe, just change this function.
-def getDistance(lat1, lon1, lat2, lon2):
-  return sqrt((lat1 - lat2) ** 2 + (lon1 - lon2) ** 2)
+def getDistance(posX_1, posY_1, posX_2, posY_2):
+  return sqrt((posX_1 - posX_2) ** 2 + (posY_1 - posY_2) ** 2)
