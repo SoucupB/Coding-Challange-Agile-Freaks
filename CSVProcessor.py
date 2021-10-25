@@ -1,5 +1,4 @@
 import requests
-from CSVValidator import validateCSVArray
 
 def splitCSVArray(data):
   return [row.split(",") for row in data.split("\n")]
@@ -13,7 +12,6 @@ def pointsIntegrity(rows):
       row[2] = float(row[2])
     except Exception as error:
       raise Exception(f"One of the coordinates is malformed '{row[1]}' or '{row[2]}'!")
-  validateCSVArray(rows)
   return rows
 
 def getCSVAsArray(path):
